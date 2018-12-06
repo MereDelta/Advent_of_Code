@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 
 namespace A01
 {
@@ -6,7 +9,19 @@ namespace A01
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string[] filePaths = Directory.GetFiles(Environment.CurrentDirectory, "*.csv", SearchOption.TopDirectoryOnly);
+            Console.WriteLine($"Path: {filePaths[0]}\r\n");
+
+            int frequenzy = 0;
+            using (var reader = new StreamReader(filePaths[0]))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    frequenzy += int.Parse(line);                    
+                }
+            }
+            Console.WriteLine($"Resulting frequenzy: {frequenzy}");
         }
     }
 }

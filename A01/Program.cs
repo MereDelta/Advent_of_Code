@@ -9,19 +9,11 @@ namespace A01
     {
         static void Main(string[] args)
         {
-            string[] filePaths = Directory.GetFiles(Environment.CurrentDirectory, "*.csv", SearchOption.TopDirectoryOnly);
-            Console.WriteLine($"Path: {filePaths[0]}\r\n");
+            var firstPart = new firstPart();
+            firstPart.process();
 
-            int frequenzy = 0;
-            using (var reader = new StreamReader(filePaths[0]))
-            {
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    frequenzy += int.Parse(line);                    
-                }
-            }
-            Console.WriteLine($"Resulting frequenzy: {frequenzy}");
+            var secondPart = new secondPart();
+            secondPart.process();
         }
     }
 }
